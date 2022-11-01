@@ -1,29 +1,31 @@
+#Initializes Everything
 file = open('UnitTypes.java', 'r')
 lineList = file.readlines()
 unitList = []
 healthList = []
 
+#Reads code line by line
 for i in range(len(lineList)):
-    if 'health' in lineList[i]:
+    #Adds all units to unitList
+    if 'new UnitType' in lineList[i]:
         nameFound = False
-        index = i
         unit = ''
         while True:
-            if 'UnitType' in lineList[index]:
-                foundQuote = False
-                for j in lineList[index]:
-                    if foundQuote is True:
-                        if j.isalpha() is True:
-                            unit += j
+            foundQuote = False
+            for j in lineList[i]:
+                if foundQuote is True:
+                    if j.isalpha() is True:
+                        unit += j
+                else:
+                    if j == '\"':
+                        foundQuote = True
                     else:
-                        if j == '\"':
-                            foundQuote = True
-                        else:
-                            continue
-                unitList.append(unit)
-                break
-            index -= 1
+                        continue
+            unitList.append(unit)
+            break
 
+    #Adds all units' health to healthList
+    if 'health' in lineList[i]:
         health = ''
         for j in lineList[i]:
             if j.isnumeric() is True:
