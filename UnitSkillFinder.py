@@ -9,7 +9,7 @@ healthList = []
 
 # Reads code line by line
 for i in range(len(lineList)):
-    #Adds all units to unitList
+    # Adds all units to unitList
     if 'new UnitType' in lineList[i]:
         unitReader = True
         unit = ''
@@ -53,3 +53,8 @@ for i in range(len(lineList)):
             if len(healthList) < len(unitList): healthList.append(0.0)
 file.flush()
 file.close()
+     
+# Puts everything into a dictionarys
+troopSpeedDict = {unitList[i]: speedList[i] for i in range(len(unitList))}
+troopHitSizeDict = {unitList[i]: hitSizeList[i] for i in range(len(unitList))}
+troopHealthDict = {unitList[i]: healthList[i] for i in range(len(unitList))}
