@@ -54,7 +54,8 @@ for i in range(len(lineList)):
 file.flush()
 file.close()
      
-# Puts everything into a dictionarys
-troopSpeedDict = {unitList[i]: speedList[i] for i in range(len(unitList))}
-troopHitSizeDict = {unitList[i]: hitSizeList[i] for i in range(len(unitList))}
-troopHealthDict = {unitList[i]: healthList[i] for i in range(len(unitList))}
+# Puts everything into a dictionary
+dict={}
+for i in range(len(unitList)): 
+    dict[unitList[i]]=[healthList[i],speedList[i],hitSizeList[i]]
+print(dict)
